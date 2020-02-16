@@ -4,6 +4,7 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const PORT = process.env.PORT || 5000;
+const node_env = process.env.NODE_ENV;
 const User = require('./models/User');
 const UserHandler = require('./models/UserHandler');
 const userHandler = new UserHandler();
@@ -50,7 +51,8 @@ io.on('connection', socket => {
 
 app.use(express.json());
 
-if (process.NODE_ENV === 'production') {
+
+if (node_env === 'production') {
   app.use(express.static(path.join(__dirname, '../frontend/build')));
 }
 
