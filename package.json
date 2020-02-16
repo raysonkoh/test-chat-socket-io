@@ -1,0 +1,12 @@
+{
+  "name": "test-chat-socket-io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+      "start": "cd backend && yarn start",
+      "heroku-postbuild": "cd frontend && yarn install && yarn build"
+  },
+  "repository": "git@github.com:LOVELELESS/test-chat-socket-io.git",
+  "author": "LOVELELESS <koh_rayson@yahoo.com.sg>",
+  "license": "MIT"
+}
