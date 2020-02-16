@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
@@ -49,10 +50,8 @@ io.on('connection', socket => {
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.status(200).json({
-    msg: 'Hello World!',
-  });
-});
+if (process.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+}
 
 server.listen(PORT, () => console.log(`Server started on port ${PORT}!`));
